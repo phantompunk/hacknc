@@ -1,5 +1,8 @@
 package edu.phambdvcu.hacknc;
 
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -9,6 +12,8 @@ public class VideoItem {
     private String title;
     private String thumbnailURL;
     private String id;
+
+    private static ArrayList vidArray = new ArrayList();
 
     public String getId() {
         return id;
@@ -32,6 +37,20 @@ public class VideoItem {
 
     public void setThumbnailURL(String thumbnail) {
         this.thumbnailURL = thumbnail;
+    }
+
+    public static ArrayList<VideoItem> getVideo() {
+        if (vidArray == null)
+            vidArray = new ArrayList();
+
+            return vidArray;
+    }
+
+    public static void setVideo(VideoItem v) {
+        if (vidArray == null)
+            vidArray = new ArrayList();
+
+        vidArray.add(v);
     }
 
 }

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class SearchActivity extends AppCompatActivity{
     private ListView videosFound;
 
     private Handler handler;
+    private static final String TAG = "MyTag";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class SearchActivity extends AppCompatActivity{
 
         searchInput = (EditText)findViewById(R.id.searchBox);
         videosFound = (ListView)findViewById(R.id.searchListView);
+        Log.v("myTag","ListView is Clickable");
 
         handler = new Handler();
 
@@ -46,6 +49,18 @@ public class SearchActivity extends AppCompatActivity{
                     return false;
                 }
                 return true;
+            }
+        });
+
+        videosFound.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> av, View v, int pos,
+                                    long id) {
+                VideoItem video = new VideoItem();
+                video.setTitle(searchResults.get(pos).getTitle());
+                video.setId(searchResults.get(pos).getId());
+                VideoItem.setVideo(video);
             }
         });
 
@@ -147,9 +162,9 @@ public class SearchActivity extends AppCompatActivity{
                                     long id) {
                 Intent intent = new Intent(getApplicationContext(), PlayerActivity.class);
                 intent.putExtra("VIDEO_ID", searchResults.get(pos).getId());
+                Log.v("myTag", "ListView is Clickable");
                 startActivity(intent);
             }
-
         });
     }
 //    private void addClickListener(){
