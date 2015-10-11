@@ -4,19 +4,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.drive.Drive;
+
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class MainActivity extends YouTubeBaseActivity implements
-        YouTubePlayer.OnInitializedListener {
+public class MainActivity extends AppCompatActivity {
 
     static private final String DEVELOPER_KEY = "AIzaSyBtTsxC0FM6u5kzQWRikQdBh0IZ2MkisVY";
+    TextView nowPlaying;
+    TextView searchBox;
+    ListView playList;
+
 
     static private final String VIDEO = "ZItRY-14ZBA";
     @Override
@@ -24,15 +28,10 @@ public class MainActivity extends YouTubeBaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GoogleApiClient client = new GoogleApiClient.Builder(this)
-                .addApi(Drive.API)
-                .addScope(Drive.SCOPE_FILE)
-                .build();
+        nowPlaying = (TextView) findViewById(R.id.nowPlayingLabel);
+        searchBox = (TextView) findViewById(R.id.searchButton);
+        playList = (ListView) findViewById(R.id.listViewBox);
 
-
-        YouTubePlayerView youTubeView = (YouTubePlayerView)
-                findViewById(R.id.youtube_view);
-        youTubeView.initialize(DEVELOPER_KEY, this);
 
 
     }
@@ -59,19 +58,4 @@ public class MainActivity extends YouTubeBaseActivity implements
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-
-
-
-    }
-
-    @Override
-    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-
-
-        Toast.makeText(this, "Oh no! " + youTubeInitializationResult.toString(),
-                Toast.LENGTH_LONG).show();
-
-    }
 }

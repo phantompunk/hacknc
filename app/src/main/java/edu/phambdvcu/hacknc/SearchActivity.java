@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -34,8 +33,8 @@ public class SearchActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        searchInput = (EditText)findViewById(R.id.search_input);
-        videosFound = (ListView)findViewById(R.id.videos_found);
+        searchInput = (EditText)findViewById(R.id.searchBox);
+        videosFound = (ListView)findViewById(R.id.searchListView);
 
         handler = new Handler();
 
@@ -68,19 +67,19 @@ public class SearchActivity extends AppCompatActivity{
     }
 
     private void updateVideosFound(){
-        ArrayAdapter<VideoItem> adapter = new ArrayAdapter<VideoItem>(getApplicationContext(), R.layout.video_item, searchResults){
+        ArrayAdapter<VideoItem> adapter = new ArrayAdapter<VideoItem>(getApplicationContext(), R.layout.activity_search, searchResults){
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 if(convertView == null){
-                    convertView = getLayoutInflater().inflate(R.layout.video_item, parent, false);
+                    convertView = getLayoutInflater().inflate(R.layout.activity_search, parent, false);
                 }
-                ImageView thumbnail = (ImageView)convertView.findViewById(R.id.video_thumbnail);
-                TextView title = (TextView)convertView.findViewById(R.id.video_title);
+                //ImageView thumbnail = (ImageView)convertView.findViewById(R.id.video_thumbnail);
+                //TextView title = (TextView)convertView.findViewById(R.id.video_title);
 
                 VideoItem searchResult = searchResults.get(position);
 
-                Picasso.with(getApplicationContext()).load(searchResult.getThumbnailURL()).into(thumbnail);
-                title.setText(searchResult.getTitle());
+                //Picasso.with(getApplicationContext()).load(searchResult.getThumbnailURL()).into(thumbnail);
+                //title.setText(searchResult.getTitle());
 
                 return convertView;
             }
