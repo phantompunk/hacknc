@@ -81,6 +81,7 @@ public class SearchActivity extends AppCompatActivity{
 
 //                Picasso.with(getApplicationContext()).load(searchResult.getThumbnailURL()).into(thumbnail);
                 title.setText(searchResult.getTitle());
+
 //                description.setText(searchResult.getDescription());
                 return convertView;
             }
@@ -151,6 +152,19 @@ public class SearchActivity extends AppCompatActivity{
 
         });
     }
+//    private void addClickListener(){
+//        videosFound.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(AdapterView<?> av, View v, int pos,
+//                                    long id) {
+//                Intent intent = new Intent(getApplicationContext(), PlayerActivity.class);
+//                intent.putExtra("VIDEO_ID", searchResults.get(pos).getId());
+//                startActivity(intent);
+//            }
+//
+//        });
+//    }
 //    private void addClickListener(){
 //        videosFound.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //
