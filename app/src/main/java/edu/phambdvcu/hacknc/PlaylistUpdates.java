@@ -30,7 +30,7 @@ public class PlaylistUpdates {
     private YouTube youtube;
     private YouTube.Search.List searcher;
 
-    static private final String DEVELOPER_KEY = "AIzaSyBtTsxC0FM6u5kzQWRikQdBh0IZ2MkisVY";
+    static public final String DEVELOPER_KEY = "AIzaSyBtTsxC0FM6u5kzQWRikQdBh0IZ2MkisVY";
 
 
     public PlaylistUpdates(Context content) {
